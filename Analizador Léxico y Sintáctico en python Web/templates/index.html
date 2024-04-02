@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analizador Léxico (Sintáctico)</title>
+  <link rel="stylesheet" href="{{ url_for('static',filename='Analizador Léxico y Sintáctico en python Web/templates/css') }}">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>Analizador Léxico y Sintáctico</h1>
+      <p class="author">Autor: Eugenia Perez</p>
+    </header>
+
+    <form id="formulario" action="/analizar" method="post">
+      <div class="input-group">
+        <label for="datos">Ingrese los datos:</label>
+        <textarea id="datos" name="datos" rows="5" cols="50">{{ datos }}</textarea>
+      </div>
+      <div class="buttons">
+        <button type="submit" name="accion" value="lexico">Analizar Léxico</button>
+        <button type="submit" name="accion" value="sintactico">Analizar Sintáctico</button>
+        <button type="button" onclick="limpiarDatos()">Limpiar Datos</button>
+        <label for="archivo" class="file-label">
+          <input type="file" id="archivo" name="archivo" accept=".txt" onchange="cargarArchivo()">
+          Seleccionar archivo
+        </label>
+      </div>
+
+      <div class="results">
+        <h2>Analizador Lexico</h2>
+        <textarea id="lexico" name="lexico" rows="5" cols="30" placeholder="Resultado Lexico" readonly="">
+            {{resultado_lexico}}
+        </textarea>
+
+        <h2>Analizador Sintáctico</h2>
+        <textarea id="sintactico" name="sintactico" rows="5" cols="30" placeholder="Resultado Sintáctico" readonly="">}
+            {{ resultado_sintactico }}
+        </textarea>
+      </div>
+    </form>
+
+  </div>
+
+  <script>
+    function limpiarDatos() {
+      document.getElementById('datos').value = '';
+      document.getElementById('lexico').value = '';
+      document.getElementById('sintactico').value = '';
+    }
+
+    function cargarArchivo() {
+      const archivoSeleccionado = document.getElementById('archivo').files[0];
+      const lector = new FileReader();
+
+      lector.onload = function(evento) {
+        const contenido = evento.target.result;
+        document.getElementById('datos').value = contenido;
+      };
+
+      lector.readAsText(archivoSeleccionado);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado del Analizador Léxico</title>
+</head>
+<body>
+    <h1>Resultado del Analizador Léxico</h1>
+    <div>
+        <ul>
+            {% for token in tokens %}
+                <li>LINEA-> {{ token.lineno }} -------| {{ token.type.capitalize().replace('_', ' ') }} |-----<SIMBOLO> {{ token.value }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
+

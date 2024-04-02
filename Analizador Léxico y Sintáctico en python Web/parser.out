@@ -1,0 +1,157 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> ciclo_while
+Rule 1     ciclo_while -> RESERVADA PARENTESIS_APERTURA RESERVADA MAYOR_QUE NUMERO PARENTESIS_CIERRE CORCHETE_APERTURA instrucciones CORCHETE_CIERRE
+Rule 2     instrucciones -> RESERVADA PARENTESIS_APERTURA COMILLA IDENTIFICADOR COMILLA PARENTESIS_CIERRE PUNTO_Y_COMA
+
+Terminals, with rules where they appear
+
+COMILLA              : 2 2
+CORCHETE_APERTURA    : 1
+CORCHETE_CIERRE      : 1
+IDENTIFICADOR        : 2
+MAYOR_QUE            : 1
+NUMERO               : 1
+PARENTESIS_APERTURA  : 1 2
+PARENTESIS_CIERRE    : 1 2
+PUNTO_Y_COMA         : 2
+RESERVADA            : 1 1 2
+error                : 
+
+Nonterminals, with rules where they appear
+
+ciclo_while          : 0
+instrucciones        : 1
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . ciclo_while
+    (1) ciclo_while -> . RESERVADA PARENTESIS_APERTURA RESERVADA MAYOR_QUE NUMERO PARENTESIS_CIERRE CORCHETE_APERTURA instrucciones CORCHETE_CIERRE
+
+    RESERVADA       shift and go to state 2
+
+    ciclo_while                    shift and go to state 1
+
+state 1
+
+    (0) S' -> ciclo_while .
+
+
+
+state 2
+
+    (1) ciclo_while -> RESERVADA . PARENTESIS_APERTURA RESERVADA MAYOR_QUE NUMERO PARENTESIS_CIERRE CORCHETE_APERTURA instrucciones CORCHETE_CIERRE
+
+    PARENTESIS_APERTURA shift and go to state 3
+
+
+state 3
+
+    (1) ciclo_while -> RESERVADA PARENTESIS_APERTURA . RESERVADA MAYOR_QUE NUMERO PARENTESIS_CIERRE CORCHETE_APERTURA instrucciones CORCHETE_CIERRE
+
+    RESERVADA       shift and go to state 4
+
+
+state 4
+
+    (1) ciclo_while -> RESERVADA PARENTESIS_APERTURA RESERVADA . MAYOR_QUE NUMERO PARENTESIS_CIERRE CORCHETE_APERTURA instrucciones CORCHETE_CIERRE
+
+    MAYOR_QUE       shift and go to state 5
+
+
+state 5
+
+    (1) ciclo_while -> RESERVADA PARENTESIS_APERTURA RESERVADA MAYOR_QUE . NUMERO PARENTESIS_CIERRE CORCHETE_APERTURA instrucciones CORCHETE_CIERRE
+
+    NUMERO          shift and go to state 6
+
+
+state 6
+
+    (1) ciclo_while -> RESERVADA PARENTESIS_APERTURA RESERVADA MAYOR_QUE NUMERO . PARENTESIS_CIERRE CORCHETE_APERTURA instrucciones CORCHETE_CIERRE
+
+    PARENTESIS_CIERRE shift and go to state 7
+
+
+state 7
+
+    (1) ciclo_while -> RESERVADA PARENTESIS_APERTURA RESERVADA MAYOR_QUE NUMERO PARENTESIS_CIERRE . CORCHETE_APERTURA instrucciones CORCHETE_CIERRE
+
+    CORCHETE_APERTURA shift and go to state 8
+
+
+state 8
+
+    (1) ciclo_while -> RESERVADA PARENTESIS_APERTURA RESERVADA MAYOR_QUE NUMERO PARENTESIS_CIERRE CORCHETE_APERTURA . instrucciones CORCHETE_CIERRE
+    (2) instrucciones -> . RESERVADA PARENTESIS_APERTURA COMILLA IDENTIFICADOR COMILLA PARENTESIS_CIERRE PUNTO_Y_COMA
+
+    RESERVADA       shift and go to state 9
+
+    instrucciones                  shift and go to state 10
+
+state 9
+
+    (2) instrucciones -> RESERVADA . PARENTESIS_APERTURA COMILLA IDENTIFICADOR COMILLA PARENTESIS_CIERRE PUNTO_Y_COMA
+
+    PARENTESIS_APERTURA shift and go to state 11
+
+
+state 10
+
+    (1) ciclo_while -> RESERVADA PARENTESIS_APERTURA RESERVADA MAYOR_QUE NUMERO PARENTESIS_CIERRE CORCHETE_APERTURA instrucciones . CORCHETE_CIERRE
+
+    CORCHETE_CIERRE shift and go to state 12
+
+
+state 11
+
+    (2) instrucciones -> RESERVADA PARENTESIS_APERTURA . COMILLA IDENTIFICADOR COMILLA PARENTESIS_CIERRE PUNTO_Y_COMA
+
+    COMILLA         shift and go to state 13
+
+
+state 12
+
+    (1) ciclo_while -> RESERVADA PARENTESIS_APERTURA RESERVADA MAYOR_QUE NUMERO PARENTESIS_CIERRE CORCHETE_APERTURA instrucciones CORCHETE_CIERRE .
+
+    $end            reduce using rule 1 (ciclo_while -> RESERVADA PARENTESIS_APERTURA RESERVADA MAYOR_QUE NUMERO PARENTESIS_CIERRE CORCHETE_APERTURA instrucciones CORCHETE_CIERRE .)
+
+
+state 13
+
+    (2) instrucciones -> RESERVADA PARENTESIS_APERTURA COMILLA . IDENTIFICADOR COMILLA PARENTESIS_CIERRE PUNTO_Y_COMA
+
+    IDENTIFICADOR   shift and go to state 14
+
+
+state 14
+
+    (2) instrucciones -> RESERVADA PARENTESIS_APERTURA COMILLA IDENTIFICADOR . COMILLA PARENTESIS_CIERRE PUNTO_Y_COMA
+
+    COMILLA         shift and go to state 15
+
+
+state 15
+
+    (2) instrucciones -> RESERVADA PARENTESIS_APERTURA COMILLA IDENTIFICADOR COMILLA . PARENTESIS_CIERRE PUNTO_Y_COMA
+
+    PARENTESIS_CIERRE shift and go to state 16
+
+
+state 16
+
+    (2) instrucciones -> RESERVADA PARENTESIS_APERTURA COMILLA IDENTIFICADOR COMILLA PARENTESIS_CIERRE . PUNTO_Y_COMA
+
+    PUNTO_Y_COMA    shift and go to state 17
+
+
+state 17
+
+    (2) instrucciones -> RESERVADA PARENTESIS_APERTURA COMILLA IDENTIFICADOR COMILLA PARENTESIS_CIERRE PUNTO_Y_COMA .
+
+    CORCHETE_CIERRE reduce using rule 2 (instrucciones -> RESERVADA PARENTESIS_APERTURA COMILLA IDENTIFICADOR COMILLA PARENTESIS_CIERRE PUNTO_Y_COMA .)
+

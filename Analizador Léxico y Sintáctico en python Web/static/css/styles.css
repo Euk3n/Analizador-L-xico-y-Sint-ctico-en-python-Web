@@ -1,0 +1,78 @@
+.container {
+    width: 99%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffef;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.inputs-container {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+    color: #666;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    resize: none;
+    background-color: #b6e9ec;
+    color: #000000;
+}
+
+.analizadores {
+    display: flex;
+    justify-content: space-between;
+}
+
+.analizador-lexico,
+.analizador-sintactico {
+    width: 48%;
+    background-color: #a3c8ff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.analizador-lexico h2,
+.analizador-sintactico h2 {
+    text-align: center;
+    color: #0a0a0a;
+    margin-bottom: 20px;
+}
+
+button {
+    background-color: #ffd562;
+    color: #050404;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.esquina-superior-izquierda {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+
+
